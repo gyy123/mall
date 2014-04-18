@@ -1,5 +1,6 @@
 package com.neusoft.ccmall.bean;
 
+
 public class CartBean {
 	
 	private int productseq;
