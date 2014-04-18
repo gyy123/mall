@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	<form-bean name="commentform" type="com.neusoft.ccmall.bean.CommentForm"></form-bean>
+  	<form-bean name="cartform" type="com.neusoft.ccmall.bean.CartForm"></form-bean>
+  	<form-bean name="orderform" type="com.neusoft.ccmall.bean.OrderForm"></form-bean>
+  	<form-bean name="userform" type="com.neusoft.ccmall.bean.UserForm"></form-bean>
+  	<form-bean name="adminform" type="com.neusoft.ccmall.bean.ManagerForm"></form-bean>
+  	<form-bean name="newsform" type="com.neusoft.ccmall.bean.NewsForm"></form-bean>
+  	<form-bean name="categoryform" type="com.neusoft.ccmall.bean.CategoryForm"></form-bean>
+  	<form-bean name="productform" type="com.neusoft.ccmall.bean.ProductForm"></form-bean>
+  	<form-bean name="salesstaticsform" type="com.neusoft.ccmall.bean.SalesStaticsForm"></form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  	<action path="/comment"
+  			type="com.neusoft.ccmall.controller.CommentDispatchAction"
+  			parameter="method"
+  			name="commentform">
+  		<forward name="item_info" path="/foreground/item_info.jsp"></forward>
+  	</action>
+  	<action path="/cart"
+  			type="com.neusoft.ccmall.controller.CartDispatchAction"
+  			parameter="method"
+  			name="cartform">
+  		<forward name="cart_list" path="/foreground/cart_list.jsp"></forward>
+  	</action>
+  	<action path="/sales"
+  			type="com.neusoft.ccmall.controller.SalesStaticsDispatchAction"
+  			parameter="method"
+  			name="salesstaticsform">
+  		<forward name="sales" path="/background/totalresult.jsp"></forward>
+  	</action>
+  	<action path="/order"
+  			type="com.neusoft.ccmall.controller.OrderDispatchAction"
+  			parameter="method"
+  			name="orderform"
+  			scope="request"
+  			validate="false">
+  		<forward name="query_result" path="/foreground/personal_order_query.jsp"></forward>
+  		<forward name="order_info" path="/foreground/personal_order_info.jsp"></forward>
+  		<forward name="order_success" path="/foreground/order_success.jsp"></forward>
+  		<forward name="order_failed" path="/foreground/order_failed.jsp"></forward>
+  		<forward name="zhuanzhang_info" path="/foreground/zhuanzhang_info.jsp"></forward>
+  		<forward name="bg_order" path="/background/order.jsp"></forward>
+  		<forward name="bg_order_update" path="/background/order_update.jsp"></forward>
+  		<forward name="bg_order_delete" path="/background/order_delete.jsp"></forward>
+  	</action>
+  	<action path="/user"
+  			parameter="method"      
+          	type="com.neusoft.ccmall.controller.UserDispatchAction"
+          	name="userform"
+          	scope="request">
+    	<forward name="success" path="/foreground/home.jsp" redirect="false"> </forward>
+    	<forward name="error" path="/foreground/login.jsp"> </forward>
+    	<forward name="home" path="/foreground/home.jsp" redirect="false"></forward>
+    	<forward name="login" path="/foreground/login.jsp"></forward>
+    	<forward name="register" path="/foreground/register.jsp"></forward>
+    	<forward name="user_info_update" path="/foreground/user_info_update.jsp"></forward>
+    	<forward name="pwd_update" path="/foreground/pwd_update.jsp"></forward>
+    	<forward name="pwd_findback" path="/foreground/pwd_findback.jsp"></forward>
+    	<forward name="pwd_findback2" path="/foreground/pwd_findback2.jsp"></forward>
+    	<forward name="pwd_findback3" path="/foreground/pwd_findback3.jsp"></forward>
+    	<forward name="searchusers" path="/background/searchusers.jsp"></forward>
+    	<forward name="searchuserstemp" path="/background/searchuserstemp.jsp"></forward>
+    	<forward name="searchuserstempsu" path="/background/searchuserstempsu.jsp"></forward>
+    	<forward name="userdetails" path="/background/userdetails.jsp"></forward>	
+  	</action>  	
+  	<action path="/admin"
+           type="com.neusoft.ccmall.controller.ManagerDispatchAction"
+           name="adminform"
+           parameter="service"
+           scope="request">
+       <forward name="superlogsuccess" path="/background/superadmin.jsp"></forward>    
+       <forward name="logsuccess" path="/background/welcome.jsp"></forward>
+       <forward name="logfail" path="/background/login.jsp"></forward>
+       <forward name="upsuccess" path="/background/index.jsp"></forward>
+       <forward name="superupsuccess" path="/background/superadmin.jsp"></forward>
+       <forward name="upfail" path="/background/index.jsp"></forward>
+       <forward name="superupfail" path="/background/superadmin.jsp"></forward>
+       <forward name="adminresult" path="/background/searchadmins.jsp"></forward>
+       <forward name="admindetails" path="/background/admindetails.jsp"></forward>
+       <forward name="admindetailstemp" path="/background/admindetailstemp.jsp"></forward>          
+   	</action>
+   	<action path="/news"
+  			type="com.neusoft.ccmall.controller.NewsDispatchAction"
+  			parameter="post"
+  			name="newsform"
+  			scope="session"
+  			validate="false">
+  		<forward name="getpost" path="/background/post.jsp"></forward>
+  		<forward name="getpost1" path="/background/postmodify.jsp"></forward>
+  		<forward name="getinformation" path="/background/information.jsp"></forward>
+  		<forward name="information_add" path="/background/information_add.jsp"></forward>
+  		<forward name="information_details" path="/background/information_details.jsp"></forward>
+  		<forward name="information_modify" path="/background/information_modify.jsp"></forward>
+  	</action>
+  	<action path="/product"
+           type="com.neusoft.ccmall.controller.ProductDispatchAction"
+           name="productform"
+           parameter="service"
+           scope="request">
+    	<forward name="item_info" path="/foreground/item_info.jsp"></forward>
+    	<forward name="add_succ" path="/background/goods_index.jsp"></forward> 
+    	<forward name="all_goods" path="/background/goods_index.jsp"></forward>
+    	<forward name="goods_info" path="/background/goods_info.jsp"></forward>  
+    	<forward name="goods_sellout" path="/background/goods_sellout.jsp"></forward> 
+    	<forward name="result" path="/background/goods_select.jsp"></forward>
+    	<forward name="goods_update" path="/background/goods_update.jsp"></forward>
+    	<forward name="success" path="/background/goods_index.jsp"></forward>
+    	<forward name="item_search_list" path="/foreground/item_search_list.jsp"></forward>        
+   	</action>
+   	<action path="/category"
+           type="com.neusoft.ccmall.controller.CategoryDispatchAction"
+           name="categoryform"
+           parameter="service"
+           scope="request">
+    	<forward name="all" path="/background/goodstype_index.jsp"></forward>
+    	<forward name="details" path="/background/goodstype_details.jsp"></forward>
+    	
+    	<forward name="main_sel" path="/background/goodstype_select_big.jsp"></forward>  
+    	<forward name="sub_sel" path="/background/goodstype_select_small.jsp"></forward>
+    	
+    	<forward name="main_up" path="/background/goodstype_update_big.jsp"></forward>  
+    	<forward name="sub_up" path="/background/goodstype_update_small.jsp"></forward>
+ 
+    	<forward name="main_all_add" path="/background/goodstype_add_big.jsp"></forward>  
+    	<forward name="sub_all_add" path="/background/goodstype_add_small.jsp"></forward> 
+    	<forward name="main_all_del" path="/background/goodstype_delete_big.jsp"></forward>  
+    	<forward name="sub_all_del" path="/background/goodstype_delete_small.jsp"></forward>
+    	<forward name="add_big" path="/background/goodstype_index.jsp"></forward> 
+    	<forward name="add_small" path="/background/goodstype_index.jsp"></forward>                   
+   	</action>
+   	<action path="/salesStatics"
+           type="com.neusoft.ccmall.controller.SalesStaticsDispatchAction"
+           name="salesstaticsform"
+           parameter="service"
+           scope="request">           
+   	</action> 	   
+  </action-mappings>
+  <message-resources parameter="com.yourcompany.struts.ApplicationResources" />
+</struts-config>
+
