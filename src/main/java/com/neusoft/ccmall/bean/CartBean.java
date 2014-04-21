@@ -8,6 +8,7 @@ public class CartBean {
 	private double price;
 	private int num;
 	private String username;
+	private String address;
 	
 	public int getProductseq() {
 		return productseq;
